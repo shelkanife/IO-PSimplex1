@@ -84,9 +84,16 @@ function createProblem(layout,variables,constrains){
     const button=document.createElement('button')
     button.textContent='Solve'
     layout.appendChild(button)
-    button.addEventListener('click',e=>solve(e))
+    button.addEventListener('click',e=>solve(e,variables,constrains))
 }
 
-function solve(e){
-    
+function solve(e,variables,constrains){
+    if(tables.hasChildNodes()) tables.replaceChildren()
+    const VARIABLES=document.getElementsByClassName('variable')
+    const CONSTRAINS=document.getElementsByClassName('constrain')
+    let problem=makeBaseMatriz(VARIABLES,CONSTRAINS)
+    let identity=generateIdentity(constrains)
+    let table=makeTable(problem,identity)
+
+    sim(table,variables,constrains)
 }

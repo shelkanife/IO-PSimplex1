@@ -1,4 +1,5 @@
 const tables=document.getElementById('tables')
+let hasSolution
 
 function areFilled(variable,constrains){
     return variable && constrains
@@ -25,6 +26,7 @@ function generateLayout(e){
     
     if(layout.hasChildNodes()) layout.replaceChildren()
     createProblem(layout,VARIABLES,CONSTRAINS)
+    hasSolution=true
 }
 
 document.forms[0].addEventListener('submit',e=>generateLayout(e))
